@@ -1,0 +1,15 @@
+.vscode/
+autom4te.cache/
+build-aux/
+src/.*
+src/*.o
+aclocal.m4
+aget
+autoscan*
+config.*
+configure
+configure.scan
+default*
+Makefile
+Makefile.in
+stamp-h1
