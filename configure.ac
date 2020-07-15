@@ -25,6 +25,10 @@ AC_CHECK_HEADERS([ \
     stdlib.h
 ])
 
+AC_CHECK_FUNCS([ \
+        getopt_long
+])
+
 # Checks for typedefs, structures, and compiler characteristics.
 AC_C_INLINE
 
