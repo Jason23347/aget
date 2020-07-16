@@ -16,46 +16,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "config.h"
-
-#include <stdio.h>
-#include <getopt.h>
-#include "aget.h"
+#include "conf.h"
 
 int
-main(int argc, char *const *argv)
+conf_init(conf_t *conf)
 {
-	char opt;
-	int ret;
-	conf_t conf[1];
-        aget_t aget[1];
+        conf->connection_num = DEFAULT_CONN_NUM;
+        conf->max_redirect_times = DEFAULT_MAX_REDIRECT;
+}
 
-        /* At least 1 argument (URL) */
-	if (argc < 2) {
-		print_help();
-		return 1;
-	}
-
-        /* Deal with options */
-	if (conf_getopt(conf, argc, argv) < 0) {
-		return 1;
-	}
-
-        /* No URL specified */
-	if (argc == optind) {
-		print_help();
-		return 1;
-	}
-
-        /* Deal with information in URL */
-
-        /* Aget init */
-
-        /* Start to download */
-
-        /* Cleanups */
-        conf_free(conf);
-        aget_free(aget);
-
-	return 0;
+void
+conf_free(conf_t *conf)
+{
 }

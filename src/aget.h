@@ -16,46 +16,18 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "config.h"
+#ifndef AGET_H
+#define AGET_H
 
-#include <stdio.h>
-#include <getopt.h>
-#include "aget.h"
+#include "conn.h"
+#include "conf.h"
 
-int
-main(int argc, char *const *argv)
-{
-	char opt;
-	int ret;
-	conf_t conf[1];
-        aget_t aget[1];
+typedef struct {
+	const conf_t *conf; /* Config struct */
+	conn_t *conn; /* Connections */
+} aget_t;
 
-        /* At least 1 argument (URL) */
-	if (argc < 2) {
-		print_help();
-		return 1;
-	}
+int aget_init(aget_t *aget, const conf_t *conf);
+void aget_free(aget_t *aget);
 
-        /* Deal with options */
-	if (conf_getopt(conf, argc, argv) < 0) {
-		return 1;
-	}
-
-        /* No URL specified */
-	if (argc == optind) {
-		print_help();
-		return 1;
-	}
-
-        /* Deal with information in URL */
-
-        /* Aget init */
-
-        /* Start to download */
-
-        /* Cleanups */
-        conf_free(conf);
-        aget_free(aget);
-
-	return 0;
-}
+#endif /* AGET_H */
